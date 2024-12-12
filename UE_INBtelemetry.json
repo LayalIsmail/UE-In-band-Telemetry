@@ -1,0 +1,3524 @@
+{
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["tmp", 32, false],
+        ["tmp_0", 32, false],
+        ["metadata.isNotClone", 1, false],
+        ["metadata.ingress_port", 16, false],
+        ["metadata.ingress_tstamp", 48, false],
+        ["metadata.totalllength", 32, false],
+        ["metadata.remaining", 8, false],
+        ["metadata.sw_id", 32, false],
+        ["metadata.isSink", 1, false],
+        ["metadata.source", 1, false],
+        ["metadata.fl_id", 16, false],
+        ["_padding_0", 5, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["instance_type", 32, false],
+        ["packet_length", 32, false],
+        ["enq_timestamp", 32, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["ingress_global_timestamp", 48, false],
+        ["egress_global_timestamp", 48, false],
+        ["mcast_grp", 16, false],
+        ["egress_rid", 16, false],
+        ["checksum_error", 1, false],
+        ["parser_error", 32, false],
+        ["priority", 3, false],
+        ["_padding", 3, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 2,
+      "fields" : [
+        ["dstAddr", 48, false],
+        ["srcAddr", 48, false],
+        ["etherType", 16, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 3,
+      "fields" : [
+        ["version", 4, false],
+        ["ihl", 4, false],
+        ["dscp", 6, false],
+        ["ecn", 2, false],
+        ["totalLen", 16, false],
+        ["identification", 16, false],
+        ["flags", 3, false],
+        ["fragOffset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdrChecksum", 16, false],
+        ["srcAddr", 32, false],
+        ["dstAddr", 32, false]
+      ]
+    },
+    {
+      "name" : "udp_t",
+      "id" : 4,
+      "fields" : [
+        ["src_port", 16, false],
+        ["dst_port", 16, false],
+        ["length_", 16, false],
+        ["checksum", 16, false]
+      ]
+    },
+    {
+      "name" : "shim_t",
+      "id" : 5,
+      "fields" : [
+        ["int_type", 8, false],
+        ["rsvd1", 8, false],
+        ["len", 8, false],
+        ["dscp", 6, false],
+        ["rsvd3", 2, false]
+      ]
+    },
+    {
+      "name" : "int_header_t",
+      "id" : 6,
+      "fields" : [
+        ["ver", 4, false],
+        ["rep", 2, false],
+        ["c", 1, false],
+        ["e", 1, false],
+        ["m", 1, false],
+        ["rsvd1", 7, false],
+        ["rsvd2", 3, false],
+        ["hop_metadata_len", 5, false],
+        ["remaining_hop_cnt", 8, false],
+        ["instruction_mask", 16, false],
+        ["seq", 16, false]
+      ]
+    },
+    {
+      "name" : "switch_t",
+      "id" : 7,
+      "fields" : [
+        ["swid", 32, false],
+        ["ingress_tstamp", 48, false],
+        ["egress_tstamp", 48, false],
+        ["hop_latency", 32, false],
+        ["flow_id", 16, false],
+        ["cpu_value", 16, false],
+        ["geo_lalitude", 32, false],
+        ["geo_longitude", 32, false],
+        ["geo_altitude", 32, false],
+        ["antenna_power", 32, false]
+      ]
+    },
+    {
+      "name" : "swtraces_t",
+      "id" : 8,
+      "fields" : [
+        ["swtraces", "*"]
+      ],
+      "max_length" : 216
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 2,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 3,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "udp",
+      "id" : 4,
+      "header_type" : "udp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "shim",
+      "id" : 5,
+      "header_type" : "shim_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "int_header",
+      "id" : 6,
+      "header_type" : "int_header_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "sw_data",
+      "id" : 7,
+      "header_type" : "switch_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "sw_traces",
+      "id" : 8,
+      "header_type" : "swtraces_t",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [
+    {
+      "id" : 1,
+      "name" : "field_list10",
+      "elements" : [
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.ingress_port"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.ingress_tstamp"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.remaining"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.sw_id"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.isSink"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.source"]
+        },
+        {
+          "type" : "field",
+          "value" : ["scalars", "metadata.fl_id"]
+        }
+      ]
+    }
+  ],
+  "errors" : [
+    ["NoError", 0],
+    ["PacketTooShort", 1],
+    ["NoMatch", 2],
+    ["StackOutOfBounds", 3],
+    ["HeaderTooShort", 4],
+    ["ParserTimeout", 5],
+    ["ParserInvalidArgument", 6]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "parse_ipv4"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "etherType"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_ipv4",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x11",
+              "mask" : null,
+              "next_state" : "parse_udp"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "protocol"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_udp",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "udp"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x1f",
+              "mask" : null,
+              "next_state" : "parse_shim"
+            },
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dscp"]
+            }
+          ]
+        },
+        {
+          "name" : "parse_shim",
+          "id" : 3,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "shim"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "int_header"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp"]
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "<<",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "expression",
+                                    "value" : {
+                                      "op" : "+",
+                                      "left" : {
+                                        "type" : "field",
+                                        "value" : ["shim", "len"]
+                                      },
+                                      "right" : {
+                                        "type" : "hexstr",
+                                        "value" : "0xfd"
+                                      }
+                                    }
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xffffffff"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x5"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffffffff"
+                      }
+                    }
+                  }
+                }
+              ],
+              "op" : "set"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "sw_traces"
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "field",
+                    "value" : ["scalars", "tmp"]
+                  }
+                }
+              ],
+              "op" : "extract_VL"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "default",
+              "value" : null,
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 501,
+        "column" : 8,
+        "source_fragment" : "MyDeparser"
+      },
+      "order" : ["ethernet", "ipv4", "udp", "shim", "int_header", "sw_data", "sw_traces"],
+      "primitives" : []
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [
+    {
+      "name" : "MyIngress.fwd_counter",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 238,
+        "column" : 39,
+        "source_fragment" : "fwd_counter"
+      },
+      "size" : 1,
+      "is_direct" : false
+    }
+  ],
+  "register_arrays" : [
+    {
+      "name" : "MyEgress.cpu_register",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 382,
+        "column" : 27,
+        "source_fragment" : "cpu_register"
+      },
+      "size" : 1,
+      "bitwidth" : 16
+    },
+    {
+      "name" : "MyEgress.geo_lalitude_register",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 383,
+        "column" : 27,
+        "source_fragment" : "geo_lalitude_register"
+      },
+      "size" : 1,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyEgress.geo_longitude_register",
+      "id" : 2,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 384,
+        "column" : 27,
+        "source_fragment" : "geo_longitude_register"
+      },
+      "size" : 1,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyEgress.geo_altitude_register",
+      "id" : 3,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 385,
+        "column" : 27,
+        "source_fragment" : "geo_altitude_register"
+      },
+      "size" : 1,
+      "bitwidth" : 32
+    },
+    {
+      "name" : "MyEgress.antenna_power_register",
+      "id" : 4,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 386,
+        "column" : 27,
+        "source_fragment" : "antenna_power_register"
+      },
+      "size" : 1,
+      "bitwidth" : 32
+    }
+  ],
+  "calculations" : [
+    {
+      "name" : "calc",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 478,
+        "column" : 8,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "algo" : "csum16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["ipv4", "version"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ihl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dscp"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ecn"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "totalLen"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "identification"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "flags"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "fragOffset"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ttl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "protocol"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "srcAddr"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dstAddr"]
+        }
+      ]
+    }
+  ],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyIngress.drop",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 241,
+            "column" : 8,
+            "source_fragment" : "mark_to_drop(standard_metadata)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.ipv4_forward",
+      "id" : 4,
+      "runtime_data" : [
+        {
+          "name" : "dstAddr",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        },
+        {
+          "name" : "sw_id",
+          "bitwidth" : 32
+        },
+        {
+          "name" : "fl_id",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 246,
+            "column" : 8,
+            "source_fragment" : "standard_metadata.egress_spec = port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "srcAddr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 247,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.srcAddr = hdr.ethernet.dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 248,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.dstAddr = dstAddr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "ttl"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 249,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl - 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.sw_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 250,
+            "column" : 8,
+            "source_fragment" : "meta.sw_id = sw_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.fl_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 3
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 251,
+            "column" : 8,
+            "source_fragment" : "meta.fl_id =fl_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.fl_id"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "?",
+                  "left" : {
+                    "type" : "hexstr",
+                    "value" : "0x0002"
+                  },
+                  "right" : {
+                    "type" : "local",
+                    "value" : 3
+                  },
+                  "cond" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "==",
+                      "left" : {
+                        "type" : "local",
+                        "value" : 2
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x00000001"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.activate_source",
+      "id" : 5,
+      "runtime_data" : [
+        {
+          "name" : "max_hop",
+          "bitwidth" : 8
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "shim"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 258,
+            "column" : 8,
+            "source_fragment" : "hdr.shim.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shim", "int_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 16,
+            "column" : 35,
+            "source_fragment" : "1; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shim", "len"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 260,
+            "column" : 8,
+            "source_fragment" : "hdr.shim.len = (bit<8>) INT_ALL_HEADER_LEN_BYTES >> 2"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_header"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 262,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "ver"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 82,
+            "column" : 27,
+            "source_fragment" : "1; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "rep"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 264,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.rep = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "c"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 265,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.c = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "e"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 266,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.e = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "m"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 267,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.m = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "rsvd1"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 268,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.rsvd1 = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "rsvd2"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 269,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.rsvd2 = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "hop_metadata_len"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0a"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 20,
+            "column" : 28,
+            "source_fragment" : "10; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "remaining_hop_cnt"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 271,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.remaining_hop_cnt = max_hop"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "instruction_mask"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 272,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.instruction_mask = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shim", "dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dscp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 275,
+            "column" : 8,
+            "source_fragment" : "hdr.shim.dscp = hdr.ipv4.dscp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dscp"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x1f"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 14,
+            "column" : 29,
+            "source_fragment" : "6w31; // indicates an INT header in the packet ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x000c"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 277,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLen = hdr.ipv4.totalLen + INT_ALL_HEADER_LEN_BYTES"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "length_"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["udp", "length_"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x000c"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 278,
+            "column" : 8,
+            "source_fragment" : "hdr.udp.length_ = hdr.udp.length_ + INT_ALL_HEADER_LEN_BYTES"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.configure_sink",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.isSink"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : true
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 287,
+            "column" : 8,
+            "source_fragment" : "meta.isSink = true"
+          }
+        },
+        {
+          "op" : "clone_ingress_pkt_to_egress",
+          "parameters" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x000001f4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x1"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 289,
+            "column" : 8,
+            "source_fragment" : "clone_preserving_field_list(CloneType.I2E, REPORT_MIRROR_SESSION_ID, 10)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyIngress.configure_sink",
+      "id" : 7,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.isSink"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : true
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 287,
+            "column" : 8,
+            "source_fragment" : "meta.isSink = true"
+          }
+        },
+        {
+          "op" : "clone_ingress_pkt_to_egress",
+          "parameters" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x000001f4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x1"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 289,
+            "column" : 8,
+            "source_fragment" : "clone_preserving_field_list(CloneType.I2E, REPORT_MIRROR_SESSION_ID, 10)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "INBtelemetry359",
+      "id" : 8,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.ingress_tstamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 359,
+            "column" : 12,
+            "source_fragment" : "meta.ingress_tstamp = standard_metadata.ingress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.ingress_port"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["standard_metadata", "ingress_port"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 360,
+            "column" : 12,
+            "source_fragment" : "meta.ingress_port = (bit<16>)standard_metadata.ingress_port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "NoAction",
+      "id" : 9,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "MyEgress.add_swtrace",
+      "id" : 10,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "sw_data"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 389,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "swid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.sw_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 390,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.swid = meta.sw_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "ingress_tstamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.ingress_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 391,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.ingress_tstamp = meta.ingress_tstamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "egress_tstamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 392,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.egress_tstamp = (egress_t)standard_metadata.egress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "-",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["standard_metadata", "egress_global_timestamp"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "metadata.ingress_tstamp"]
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0000ffffffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 393,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.hop_latency = (bit<32>) ( standard_metadata.egress_global_timestamp - meta.ingress_tstamp )"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "flow_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.fl_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 394,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.flow_id = meta.fl_id"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "cpu_value"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.cpu_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 395,
+            "column" : 8,
+            "source_fragment" : "cpu_register.read(hdr.sw_data.cpu_value,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "geo_lalitude"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.geo_lalitude_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 396,
+            "column" : 8,
+            "source_fragment" : "geo_lalitude_register.read(hdr.sw_data.geo_lalitude,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "geo_longitude"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.geo_longitude_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 397,
+            "column" : 8,
+            "source_fragment" : "geo_longitude_register.read(hdr.sw_data.geo_longitude,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "geo_altitude"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.geo_altitude_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 398,
+            "column" : 8,
+            "source_fragment" : "geo_altitude_register.read(hdr.sw_data.geo_altitude,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "antenna_power"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.antenna_power_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 399,
+            "column" : 8,
+            "source_fragment" : "antenna_power_register.read( hdr.sw_data.antenna_power,0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "remaining_hop_cnt"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["int_header", "remaining_hop_cnt"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 401,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.remaining_hop_cnt = hdr.int_header.remaining_hop_cnt - 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shim", "len"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shim", "len"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0a"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 404,
+            "column" : 8,
+            "source_fragment" : "hdr.shim.len = hdr.shim.len + (bit<8>) HOP_MD_WORDS"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.add_swtrace",
+      "id" : 11,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "sw_data"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 389,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "swid"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.sw_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 390,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.swid = meta.sw_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "ingress_tstamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.ingress_tstamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 391,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.ingress_tstamp = meta.ingress_tstamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "egress_tstamp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_global_timestamp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 392,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.egress_tstamp = (egress_t)standard_metadata.egress_global_timestamp"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "hop_latency"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "-",
+                              "left" : {
+                                "type" : "field",
+                                "value" : ["standard_metadata", "egress_global_timestamp"]
+                              },
+                              "right" : {
+                                "type" : "field",
+                                "value" : ["scalars", "metadata.ingress_tstamp"]
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffffffffffff"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0000ffffffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 393,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.hop_latency = (bit<32>) ( standard_metadata.egress_global_timestamp - meta.ingress_tstamp )"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "flow_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.fl_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 394,
+            "column" : 8,
+            "source_fragment" : "hdr.sw_data.flow_id = meta.fl_id"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "cpu_value"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.cpu_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 395,
+            "column" : 8,
+            "source_fragment" : "cpu_register.read(hdr.sw_data.cpu_value,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "geo_lalitude"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.geo_lalitude_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 396,
+            "column" : 8,
+            "source_fragment" : "geo_lalitude_register.read(hdr.sw_data.geo_lalitude,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "geo_longitude"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.geo_longitude_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 397,
+            "column" : 8,
+            "source_fragment" : "geo_longitude_register.read(hdr.sw_data.geo_longitude,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "geo_altitude"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.geo_altitude_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 398,
+            "column" : 8,
+            "source_fragment" : "geo_altitude_register.read(hdr.sw_data.geo_altitude,0)"
+          }
+        },
+        {
+          "op" : "register_read",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["sw_data", "antenna_power"]
+            },
+            {
+              "type" : "register_array",
+              "value" : "MyEgress.antenna_power_register"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00000000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 399,
+            "column" : 8,
+            "source_fragment" : "antenna_power_register.read( hdr.sw_data.antenna_power,0)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["int_header", "remaining_hop_cnt"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["int_header", "remaining_hop_cnt"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 401,
+            "column" : 8,
+            "source_fragment" : "hdr.int_header.remaining_hop_cnt = hdr.int_header.remaining_hop_cnt - 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLen"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 402,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLen = hdr.ipv4.totalLen + HOP_MD_LEN_BYTES"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "length_"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["udp", "length_"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0028"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 403,
+            "column" : 8,
+            "source_fragment" : "hdr.udp.length_ = hdr.udp.length_ + HOP_MD_LEN_BYTES"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["shim", "len"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["shim", "len"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0a"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 404,
+            "column" : 8,
+            "source_fragment" : "hdr.shim.len = hdr.shim.len + (bit<8>) HOP_MD_WORDS"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "MyEgress.changeReport_action",
+      "id" : 12,
+      "runtime_data" : [
+        {
+          "name" : "dstAddrmac",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "dstAddrip",
+          "bitwidth" : 32
+        },
+        {
+          "name" : "dst_port",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 408,
+            "column" : 8,
+            "source_fragment" : "hdr.ethernet.dstAddr = dstAddrmac"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dstAddr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 409,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.dstAddr = dstAddrip"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dst_port"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 410,
+            "column" : 8,
+            "source_fragment" : "hdr.udp.dst_port = dst_port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "INBtelemetry439",
+      "id" : 13,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "hexstr",
+                        "value" : "0x001c"
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "<<",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["shim", "len"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0x2"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xff"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 439,
+            "column" : 8,
+            "source_fragment" : "hdr.ipv4.totalLen = IPV4_MIN_HEAD_LEN + UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "length_"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "hexstr",
+                        "value" : "0x0008"
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "<<",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["shim", "len"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0x2"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xff"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 443,
+            "column" : 8,
+            "source_fragment" : "hdr.udp.length_ = UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "INBtelemetry447",
+      "id" : 14,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "metadata.totalllength"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "+",
+                          "left" : {
+                            "type" : "hexstr",
+                            "value" : "0x002a"
+                          },
+                          "right" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "expression",
+                                    "value" : {
+                                      "op" : "<<",
+                                      "left" : {
+                                        "type" : "field",
+                                        "value" : ["shim", "len"]
+                                      },
+                                      "right" : {
+                                        "type" : "hexstr",
+                                        "value" : "0x2"
+                                      }
+                                    }
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xffff"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 447,
+            "column" : 8,
+            "source_fragment" : "meta.totalllength = (bit<32>) ( ETH_HEADER_LEN + IPV4_MIN_HEAD_LEN + UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2) )"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_0"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "+",
+                          "left" : {
+                            "type" : "hexstr",
+                            "value" : "0x002a"
+                          },
+                          "right" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "&",
+                                  "left" : {
+                                    "type" : "expression",
+                                    "value" : {
+                                      "op" : "<<",
+                                      "left" : {
+                                        "type" : "field",
+                                        "value" : ["shim", "len"]
+                                      },
+                                      "right" : {
+                                        "type" : "hexstr",
+                                        "value" : "0x2"
+                                      }
+                                    }
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0xff"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xffff"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xffff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffffffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 448,
+            "column" : 17,
+            "source_fragment" : "meta.totalllength"
+          }
+        },
+        {
+          "op" : "truncate",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_0"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 448,
+            "column" : 8,
+            "source_fragment" : "truncate(meta.totalllength)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "INBtelemetry456",
+      "id" : 15,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLen"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "totalLen"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "<<",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["shim", "len"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0x2"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xff"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 456,
+            "column" : 16,
+            "source_fragment" : "hdr.ipv4.totalLen = hdr.ipv4.totalLen - (bit<16>) ( hdr.shim.len << 2 )"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "length_"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "-",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["udp", "length_"]
+                      },
+                      "right" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "expression",
+                            "value" : {
+                              "op" : "&",
+                              "left" : {
+                                "type" : "expression",
+                                "value" : {
+                                  "op" : "<<",
+                                  "left" : {
+                                    "type" : "field",
+                                    "value" : ["shim", "len"]
+                                  },
+                                  "right" : {
+                                    "type" : "hexstr",
+                                    "value" : "0x2"
+                                  }
+                                }
+                              },
+                              "right" : {
+                                "type" : "hexstr",
+                                "value" : "0xff"
+                              }
+                            }
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0xffff"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xffff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 457,
+            "column" : 16,
+            "source_fragment" : "hdr.udp.length_ = hdr.udp.length_ - (bit<16>) (hdr.shim.len << 2)"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dscp"]
+            },
+            {
+              "type" : "field",
+              "value" : ["shim", "dscp"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 458,
+            "column" : 16,
+            "source_fragment" : "hdr.ipv4.dscp =hdr.shim.dscp"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "shim"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 460,
+            "column" : 16,
+            "source_fragment" : "hdr.shim.setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "int_header"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 461,
+            "column" : 16,
+            "source_fragment" : "hdr.int_header.setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "sw_traces"
+            }
+          ],
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 462,
+            "column" : 16,
+            "source_fragment" : "hdr.sw_traces.setInvalid()"
+          }
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 234,
+        "column" : 8,
+        "source_fragment" : "MyIngress"
+      },
+      "init_table" : "node_2",
+      "tables" : [
+        {
+          "name" : "MyIngress.ipv4_lpm",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 292,
+            "column" : 10,
+            "source_fragment" : "ipv4_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "lpm",
+              "name" : "hdr.ipv4.dstAddr",
+              "target" : ["ipv4", "dstAddr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.udp.dst_port",
+              "target" : ["udp", "dst_port"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "lpm",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4, 3, 0],
+          "actions" : ["MyIngress.ipv4_forward", "MyIngress.drop", "NoAction"],
+          "base_default_next" : "tbl_INBtelemetry359",
+          "next_tables" : {
+            "MyIngress.ipv4_forward" : "tbl_INBtelemetry359",
+            "MyIngress.drop" : "tbl_INBtelemetry359",
+            "NoAction" : "tbl_INBtelemetry359"
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_INBtelemetry359",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 359,
+            "column" : 32,
+            "source_fragment" : "= standard_metadata.ingress_global_timestamp; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [8],
+          "actions" : ["INBtelemetry359"],
+          "base_default_next" : "MyIngress.tb_activate_source",
+          "next_tables" : {
+            "INBtelemetry359" : "MyIngress.tb_activate_source"
+          },
+          "default_entry" : {
+            "action_id" : 8,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyIngress.tb_activate_source",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 307,
+            "column" : 10,
+            "source_fragment" : "tb_activate_source"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "standard_metadata.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.udp.dst_port",
+              "target" : ["udp", "dst_port"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 255,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5, 1],
+          "actions" : ["MyIngress.activate_source", "NoAction"],
+          "base_default_next" : "MyIngress.tb_int_sink",
+          "next_tables" : {
+            "MyIngress.activate_source" : "MyIngress.tb_int_sink",
+            "NoAction" : "MyIngress.tb_int_sink"
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "MyIngress.tb_int_sink",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 335,
+            "column" : 10,
+            "source_fragment" : "tb_int_sink"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "standard_metadata.egress_spec",
+              "target" : ["standard_metadata", "egress_spec"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.udp.dst_port",
+              "target" : ["udp", "dst_port"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 255,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6, 2],
+          "actions" : ["MyIngress.configure_sink", "NoAction"],
+          "base_default_next" : "node_7",
+          "next_tables" : {
+            "MyIngress.configure_sink" : "node_7",
+            "NoAction" : "node_7"
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_configure_sink",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 366,
+            "column" : 16,
+            "source_fragment" : "configure_sink()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [7],
+          "actions" : ["MyIngress.configure_sink"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "MyIngress.configure_sink" : null
+          },
+          "default_entry" : {
+            "action_id" : 7,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_2",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 355,
+            "column" : 12,
+            "source_fragment" : "hdr.ipv4.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["ipv4", "$valid$"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "MyIngress.ipv4_lpm"
+        },
+        {
+          "name" : "node_7",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 365,
+            "column" : 16,
+            "source_fragment" : "meta.isSink"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["scalars", "metadata.isSink"]
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_configure_sink"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 378,
+        "column" : 8,
+        "source_fragment" : "MyEgress"
+      },
+      "init_table" : "node_11",
+      "tables" : [
+        {
+          "name" : "tbl_add_swtrace",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 435,
+            "column" : 8,
+            "source_fragment" : "add_swtrace()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [10],
+          "actions" : ["MyEgress.add_swtrace"],
+          "base_default_next" : "tbl_INBtelemetry439",
+          "next_tables" : {
+            "MyEgress.add_swtrace" : "tbl_INBtelemetry439"
+          },
+          "default_entry" : {
+            "action_id" : 10,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_INBtelemetry439",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 439,
+            "column" : 26,
+            "source_fragment" : "= IPV4_MIN_HEAD_LEN + UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2) ; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [13],
+          "actions" : ["INBtelemetry439"],
+          "base_default_next" : "MyEgress.changeReport_table",
+          "next_tables" : {
+            "INBtelemetry439" : "MyEgress.changeReport_table"
+          },
+          "default_entry" : {
+            "action_id" : 13,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "MyEgress.changeReport_table",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 413,
+            "column" : 10,
+            "source_fragment" : "changeReport_table"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [12, 9],
+          "actions" : ["MyEgress.changeReport_action", "NoAction"],
+          "base_default_next" : "tbl_INBtelemetry447",
+          "next_tables" : {
+            "MyEgress.changeReport_action" : "tbl_INBtelemetry447",
+            "NoAction" : "tbl_INBtelemetry447"
+          },
+          "default_entry" : {
+            "action_id" : 9,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_INBtelemetry447",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 447,
+            "column" : 26,
+            "source_fragment" : "= (bit<32>) ( ETH_HEADER_LEN + IPV4_MIN_HEAD_LEN + UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2) ); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [14],
+          "actions" : ["INBtelemetry447"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "INBtelemetry447" : null
+          },
+          "default_entry" : {
+            "action_id" : 14,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_add_swtrace_0",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 453,
+            "column" : 16,
+            "source_fragment" : "add_swtrace()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [11],
+          "actions" : ["MyEgress.add_swtrace"],
+          "base_default_next" : "node_18",
+          "next_tables" : {
+            "MyEgress.add_swtrace" : "node_18"
+          },
+          "default_entry" : {
+            "action_id" : 11,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_INBtelemetry456",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 456,
+            "column" : 34,
+            "source_fragment" : "= hdr.ipv4.totalLen - (bit<16>) ( hdr.shim.len << 2 ) ; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [15],
+          "actions" : ["INBtelemetry456"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "INBtelemetry456" : null
+          },
+          "default_entry" : {
+            "action_id" : 15,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_11",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 431,
+            "column" : 12,
+            "source_fragment" : "meta.isSink && standard_metadata.instance_type == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["scalars", "metadata.isSink"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["standard_metadata", "instance_type"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x00000001"
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_add_swtrace",
+          "false_next" : "node_16"
+        },
+        {
+          "name" : "node_16",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 452,
+            "column" : 16,
+            "source_fragment" : "hdr.shim.isValid() && !(meta.isSink)"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["shim", "$valid$"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "not",
+                  "left" : null,
+                  "right" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "d2b",
+                      "left" : null,
+                      "right" : {
+                        "type" : "field",
+                        "value" : ["scalars", "metadata.isSink"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_add_swtrace_0",
+          "false_next" : "node_18"
+        },
+        {
+          "name" : "node_18",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "INBtelemetry.p4",
+            "line" : 455,
+            "column" : 16,
+            "source_fragment" : "meta.isSink && standard_metadata.instance_type == 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["scalars", "metadata.isSink"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["standard_metadata", "instance_type"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x00000000"
+                  }
+                }
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_INBtelemetry456"
+        }
+      ]
+    }
+  ],
+  "checksums" : [
+    {
+      "name" : "cksum",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "INBtelemetry.p4",
+        "line" : 478,
+        "column" : 8,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "target" : ["ipv4", "hdrChecksum"],
+      "type" : "generic",
+      "calculation" : "calc",
+      "verify" : false,
+      "update" : true,
+      "if_cond" : {
+        "type" : "expression",
+        "value" : {
+          "op" : "d2b",
+          "left" : null,
+          "right" : {
+            "type" : "field",
+            "value" : ["ipv4", "$valid$"]
+          }
+        }
+      }
+    }
+  ],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [
+    [
+      "queueing_metadata.enq_timestamp",
+      ["standard_metadata", "enq_timestamp"]
+    ],
+    [
+      "queueing_metadata.enq_qdepth",
+      ["standard_metadata", "enq_qdepth"]
+    ],
+    [
+      "queueing_metadata.deq_timedelta",
+      ["standard_metadata", "deq_timedelta"]
+    ],
+    [
+      "queueing_metadata.deq_qdepth",
+      ["standard_metadata", "deq_qdepth"]
+    ],
+    [
+      "intrinsic_metadata.ingress_global_timestamp",
+      ["standard_metadata", "ingress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.egress_global_timestamp",
+      ["standard_metadata", "egress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.mcast_grp",
+      ["standard_metadata", "mcast_grp"]
+    ],
+    [
+      "intrinsic_metadata.egress_rid",
+      ["standard_metadata", "egress_rid"]
+    ],
+    [
+      "intrinsic_metadata.priority",
+      ["standard_metadata", "priority"]
+    ]
+  ],
+  "program" : "./INBtelemetry.p4i",
+  "__meta__" : {
+    "version" : [2, 23],
+    "compiler" : "https://github.com/p4lang/p4c"
+  }
+}
