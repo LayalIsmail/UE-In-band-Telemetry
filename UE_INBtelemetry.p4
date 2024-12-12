@@ -8,15 +8,11 @@
 
 const bit<8>  UDP_PROTOCOL = 0x11;
 const bit<16> TYPE_IPV4 = 0X800;
-// const bit<6> TYPE_INT = 6w31;
-// const bit<16> TYPE_INT1 = 0x10E2;
 const bit<32> REPORT_MIRROR_SESSION_ID = 500;
-const bit<6> IPv4_DSCP_INT = 6w31;   // indicates an INT header in the packet
+const bit<6> IPv4_DSCP_INT = 6w31;   
 const bit<16> INT_SHIM_HEADER_LEN_BYTES = 4;
 const bit<8> INT_TYPE_HOP_BY_HOP = 1;
-//const bit<16> HOP_MD_LEN_BYTES = 36;
 const bit<16> HOP_MD_LEN_BYTES = 40;
-//const bit<5> HOP_MD_WORDS = 9;
 const bit<5> HOP_MD_WORDS = 10;
 
 /*************************************************************************
@@ -36,7 +32,7 @@ typedef bit<32> geo_lalitude_t;
 typedef bit<32> geo_longitude_t;
 typedef bit<32> geo_altitude_t;
 typedef bit<32> antenna_power_t;
-//typedef bit<24> padding_field_t;
+
 
 header ethernet_t {
     macAddr_t dstAddr;
@@ -74,8 +70,8 @@ const bit<16> UDP_HEADER_LEN = 8;
 header shim_t {
     bit<8> int_type;
     bit<8> rsvd1;
-    bit<8> len;    // the length of all INT headers in 4-byte words
-    bit<6> dscp;  // copy DSCP here
+    bit<8> len;    
+    bit<6> dscp;  
     bit<2> rsvd3;
 }
 const bit<16> INT_HEADER_LEN_BYTES = 8;
@@ -89,14 +85,14 @@ header int_header_t {
     bit<1>  m;
     bit<7>  rsvd1;
     bit<3>  rsvd2;
-    bit<5>  hop_metadata_len;   // the length of the metadata added by a single INT node (4-byte words)
-    bit<8>  remaining_hop_cnt;  // how many switches can still add INT metadata
+    bit<5>  hop_metadata_len;   
+    bit<8>  remaining_hop_cnt;  
     bit<16> instruction_mask;
-    bit<16> seq;  // rsvd3 - custom implementation of a sequence number
+    bit<16> seq;  
 }
 const bit<16> INT_ALL_HEADER_LEN_BYTES = INT_SHIM_HEADER_LEN_BYTES + INT_HEADER_LEN_BYTES;
 
-// we add padding field because the size is 29 in order to get 32
+
 
 header switch_t {
     switchID_t       swid;
@@ -109,7 +105,6 @@ header switch_t {
     geo_longitude_t  geo_longitude;
     geo_altitude_t geo_altitude; 
     antenna_power_t  antenna_power;
-    //padding_field_t  padding_field;  
 }
 
 header swtraces_t {
@@ -120,10 +115,6 @@ header swtraces_t {
 
 
 struct metadata {
-    /*
-    this bool value is set to true in normal packets, because it's not saved 
-    when the packet is cloned it goes back to false when the packet is cloned.
-    */
     bool isNotClone;
     @field_list(10)
     bit<16>  ingress_port;
@@ -204,17 +195,17 @@ parser MyParser(packet_in packet,
     }
 
     state parse_swtraces {
-        
+        /*
+        extraction length = shim total length (including shim header 1 word) - INT hdr (2 words)
+        converted from word to bits (left shift by 5 = multiplying by 32 ) 
+        */
         packet.extract( hdr.sw_traces,  (bit<32>) ( hdr.shim.len - 3 ) << 5  );
         transition accept;
 
     }
 
 
-/*
-        extraction length = shim total length (including shim header 1 word) - INT hdr (2 words)
-        converted from word to bits (left shift by 5 = multiplying by 32 ) 
-        */
+
 }
 
 
@@ -242,7 +233,6 @@ control MyIngress(inout headers hdr,
     }
 
     action ipv4_forward(macAddr_t dstAddr, egressSpec_t port, bit<32> sw_id, bit<16> fl_id ) {
-        //fwd_counter.count(32w0);
         standard_metadata.egress_spec = port;
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
@@ -269,23 +259,17 @@ control MyIngress(inout headers hdr,
         hdr.int_header.rsvd2 = 0;
         hdr.int_header.hop_metadata_len = HOP_MD_WORDS;
         hdr.int_header.remaining_hop_cnt = max_hop;  //will be decreased immediately by 1 within transit process
-        hdr.int_header.instruction_mask = 0;
-        //hdr_seq_num_register.read(hdr.int_header.seq, 0);
-        //hdr_seq_num_register.write(0, hdr.int_header.seq + 1);     
+        hdr.int_header.instruction_mask = 0;   
         hdr.shim.dscp = hdr.ipv4.dscp; 
         hdr.ipv4.dscp = IPv4_DSCP_INT;   // indicates that INT header in the packet
         hdr.ipv4.totalLen = hdr.ipv4.totalLen + INT_ALL_HEADER_LEN_BYTES;  // adding size of INT headers
         hdr.udp.length_ = hdr.udp.length_ + INT_ALL_HEADER_LEN_BYTES;  
     }
 
-    /* action activate_source() {
-        meta.source = 1;
-        meta.count = 0;
-    }*/
+   
 
     action configure_sink() {
         meta.isSink = true;   // indicate that INT headers must be removed in egress
-        //meta.isNotClone = true;
         clone_preserving_field_list(CloneType.I2E, REPORT_MIRROR_SESSION_ID, 10); 
         }
 
@@ -309,27 +293,13 @@ control MyIngress(inout headers hdr,
         key = {
             standard_metadata.ingress_port: exact;
             hdr.udp.dst_port: exact;
-            //hdr.ipv4.identification: exact; 
-            // meta.sw_id    : exact;
-            //hdr.ipv4.dstAddr     : exact;
         }
         actions = {
             activate_source;
         }
         size = 255;
     }
-    /*table tb_int_source {
-       
-        key = {
-            hdr.ipv4.srcAddr     : exact;
-            hdr.ipv4.dstAddr     : exact;
-        len
-        }
-         actions = {
-            action_source;
-        }
-        size = 127;
-    }*/
+
 
 
     table tb_int_sink {
@@ -340,7 +310,6 @@ control MyIngress(inout headers hdr,
              standard_metadata.egress_spec: exact;
              hdr.udp.dst_port: exact;
             
-            //  hdr.int_header.remaining_hop_cnt  : exact; 
 
         }
         size = 255;
@@ -359,7 +328,6 @@ control MyIngress(inout headers hdr,
             meta.ingress_tstamp = standard_metadata.ingress_global_timestamp;
             meta.ingress_port = (bit<16>)standard_metadata.ingress_port;
             tb_activate_source.apply();
-            //tb_int_source.apply();
             tb_int_sink.apply();
         
             if (meta.isSink){
@@ -397,7 +365,6 @@ control MyEgress(inout headers hdr,
         geo_longitude_register.read(hdr.sw_data.geo_longitude,0);
         geo_altitude_register.read(hdr.sw_data.geo_altitude,0);
         antenna_power_register.read( hdr.sw_data.antenna_power,0);
-        //hdr.sw_data.padding_field = 0;
         hdr.int_header.remaining_hop_cnt = hdr.int_header.remaining_hop_cnt - 1;
         hdr.ipv4.totalLen = hdr.ipv4.totalLen +  HOP_MD_LEN_BYTES;
         hdr.udp.length_ = hdr.udp.length_ + HOP_MD_LEN_BYTES;
@@ -413,7 +380,7 @@ control MyEgress(inout headers hdr,
     table changeReport_table{
     
       key = {
-            //standard_metadata.instance_type : exact;
+      
             }
       actions = {
             changeReport_action; NoAction;
@@ -425,23 +392,16 @@ control MyEgress(inout headers hdr,
 
     apply {
         
-
-       // log_msg("Entered Egress: isSink {}, isNotClone: {}, remaining: {}",{ meta.isSink, meta.isNotClone, meta.remaining });
-       // if ( meta.isSink && !meta.isNotClone ){
         if (meta.isSink && standard_metadata.instance_type == PKT_INSTANCE_TYPE_INGRESS_CLONE ){
-            
-           // log_msg(" Egress_isSink_isNotClone {} ",{ meta.remaining });
             
         add_swtrace();
             
-          //  IPv4 length = 20 bytes IP header length + 8 bytes udp + 4byte shim + 3*20 Metadata of three switches
+          //  IPv4 length = 20 bytes IP header length + 8 bytes udp + 4byte shim 
           
         hdr.ipv4.totalLen = IPV4_MIN_HEAD_LEN + UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2) ;
             
-        // udp header length = 8 bytes udp + 4 byte shim + 3*20 metadat of three switches
-           
         hdr.udp.length_ = UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2);
-            // total length of packet = Ethernet length 14 bytes + IPv4 length 89 bytes 
+  
         changeReport_table.apply();
 
         meta.totalllength = (bit<32>) ( ETH_HEADER_LEN + IPV4_MIN_HEAD_LEN + UDP_HEADER_LEN + (bit<16>) (hdr.shim.len << 2)  );
@@ -460,7 +420,6 @@ control MyEgress(inout headers hdr,
                 hdr.shim.setInvalid();
                 hdr.int_header.setInvalid();
                 hdr.sw_traces.setInvalid();
-               // hdr.ipv4.dscp = hdr.shim.dscp;
 
             }
         }
